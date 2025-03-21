@@ -1,0 +1,20 @@
+{
+  "name": "signer",
+  "version": "0.0.1",
+  "description": "Microservice for signing claims and generating JWTs",
+  "main": "main.js",
+  "author": "Juan F. Meleiro",
+  "license": "None",
+  "private": true,
+  "scripts": {
+    "run": "npx node main.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2"
+  }
+  "private": true,
+  "scripts": {
+    "start": "npx node main.js"
+  }
+}
