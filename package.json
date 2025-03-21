@@ -11,10 +11,5 @@
   },
   "dependencies": {
     "express": "^4.21.2",
-    "jsonwebtoken": "^9.0.2"
-  }
-  "private": true,
-  "scripts": {
-    "start": "npx node main.js"
   }
 }
