@@ -1,0 +1,48 @@
+{
+	"openapi": "3.1.1",
+	"info": {
+		"title": "Signer microservice interface",
+		"version": "0",
+		"description": "This API is for a microservice that performs a single task: signing JSON claims sets and packaging them into JWTs. This is done through the root endpoint using a POST request with the claims set in the body."
+	},
+	"paths": {
+		"/": {
+			"post": {
+				"operationId": "sign_claims",
+				"requestBody": {
+					"description": "A JSON claims set as per RFC 7519.",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "Request body was signed and packaged into a JWT which can be found in the response body.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"auth_token": {
+											"type": "string",
+											"pattern": "[A-Za-z0-9_-]+\\.[A-Za-z0-9_-]+\\.[A-Za-z0-9_-]+",
+											"description": "A string containing a JWT as per RFC 7519. This JWT's claims must match the ones sent as the body of the request."
+										}
+									}
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Request body was ill-formed; i.e., the body as not a JSON claims set."
+					}
+				}
+			}
+		}
+	}
+}
